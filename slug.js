@@ -10,6 +10,8 @@ function symbols(code) {
 }
 
 function slug(string, opts) {
+    if ('string' !== typeof string)
+        throw new Error('input must be a string')
     string = string.toString();
     if ('string' === typeof opts)
         opts = {replacement:opts};
