@@ -61,12 +61,17 @@ function slug(string, opts) {
         if (opts.remove) char = char.replace(opts.remove, ''); // add flavour
         result += char;
     }
-    result = result.replace(/^\s+|\s+$/g, ''); // trim leading/trailing spaces
-    result = result.replace(/[-\s]+/g, opts.replacement); // convert spaces
-    result = result.replace(new RegExp(opts.replacement + '$'),''); // remove trailing separator
-    if (opts.lower)
-      result = result.toLowerCase();
-    return result;
+
+    if (opts.limit) {
+        var split_array = result.split(' ');
+        split_array.splice(opts.limit, split_array.length - opts.limit);
+        result = split_array.join(' ');
+    }
+
+    result = result.replace(/^\s+|\s+$/g, '') // trim leading/trailing spaces
+      .replace(/[-\s]+/g, opts.replacement)   // convert spaces
+      .replace(new RegExp(opts.replacement + '$'),'');      // remove trailing separator
+    return (opts.lower) ? result.toLowerCase()  : result;
 };
 
 slug.defaults = {
@@ -162,7 +167,7 @@ slug.charmap  = slug.defaults.charmap = {
     '“': '"', '”': '"', '‘': "'", '’': "'", '∂': 'd', 'ƒ': 'f', '™': 'tm',
     '℠': 'sm', '…': '...', '˚': 'o', 'º': 'o', 'ª': 'a', '•': '*',
     '∆': 'delta', '∞': 'infinity', '♥': 'love', '&': 'and', '|': 'or',
-    '<': 'less', '>': 'greater',
+    '<': 'less', '>': 'greater', '×': 'x',
 };
 
 slug.defaults.modes = {
