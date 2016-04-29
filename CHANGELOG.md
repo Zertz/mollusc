@@ -4,10 +4,4 @@
 * Removed `pretty` mode
 * Removed `options.mode`
 * Removed `replacement` as second argument, use `slug(input, { replacement: '' })`
-* Removed default `multicharmap`, previous behavior was to set the following:
-
-```js
-slug.multicharmap = {
-  '<3': 'love', '&&': 'and', '||': 'or', 'w/': 'with'
-}
-```
+* Removed default `multicharmap`, it was previously set to: `{ '<3': 'love', '&&': 'and', '||': 'or', 'w/': 'with' }`
