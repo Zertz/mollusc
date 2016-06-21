@@ -38,6 +38,14 @@ describe('slug', function () {
     }
   })
 
+  it('should leave non-allowed characters if they are in the charmap', function () {
+    var char_map = {
+      ']': '['
+    }
+
+    slug('foo] bar baz', {charmap: char_map}).should.eql('foo[-bar-baz')
+  })
+
   it('should replace latin chars', function () {
     var char_map = {
       'À': 'A', 'Á': 'A', 'Â': 'A', 'Ã': 'A', 'Ä': 'A', 'Å': 'A', 'Æ': 'AE',
@@ -284,15 +292,6 @@ describe('slug', function () {
     slug("It's Your Journey We Guide You Through.", {
       limit: 5
     }).should.eql('its-your-journey-we-guide')
-  })
-
-  it('should remove disallowed characters even if they are in the char map', function () {
-    var charMap = {
-      '©': '(c)'
-    }
-    slug('mollusc ©', {
-      charmap: charMap
-    }).should.eql('mollusc-c')
   })
 
   it('should allow you to replace valid characters with an empty string', function () {
