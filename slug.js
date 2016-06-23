@@ -68,7 +68,7 @@
           return false
         }
       })) {
-        if (opts.charmap[char] !== undefined) {
+        if (typeof opts.charmap[char] === 'string') {
           char = opts.charmap[char]
           code = char.charCodeAt(0)
         } else {
