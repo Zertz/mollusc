@@ -24,13 +24,16 @@
   "scripts": {
     "lint": "standard",
     "pretest": "npm run lint",
-    "test": "mocha -R spec ./test"
+    "test": "mocha -R spec ./test",
+    "test-coverage": "nyc npm run test",
+    "report-coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "dependencies": {
     "unicode-json": "~2.0.0"
   },
   "devDependencies": {
     "mocha": "^4.0.1",
+    "nyc": "^11.3.0",
     "should": "^3.1.2",
     "standard": "^10.0.3"
   },
