@@ -59,17 +59,17 @@ Default: `-`
 
 Replace unicode symbols with their name.
 
-Type: `Boolean`
+Type: `boolean`
 
 Default:
-Node: `true`
-Browser: `false`
+- Node: `true`
+- Browser: `false`
 
 #### remove
 
 Regex to remove characters.
 
-Type: `Boolean`
+Type: `boolean`
 
 Default: `null`
 
@@ -77,15 +77,23 @@ Default: `null`
 
 Convert result to lower case.
 
-Type: `Boolean`
+Type: `boolean`
 
 Default: `true`
+
+#### limit
+
+Result should have no more than that many words.
+
+Type: `number`
+
+Default: `null`
 
 #### charmap
 
 Replace special characters.
 
-Type: `Object`
+Type: `object`
 
 Default: `slug.charmap`
 
@@ -93,7 +101,7 @@ Default: `slug.charmap`
 
 Replace strings with another string.
 
-Type: `Object`
+Type: `object`
 
 Default: `slug.multicharmap`
 
