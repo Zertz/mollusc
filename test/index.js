@@ -1,6 +1,6 @@
 var should = require('should')
 
-var slug = require('./slug')
+var slug = require('../src')
 
 describe('slug', function () {
   it('should throw when input is not a string', function () {
