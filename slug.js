@@ -103,7 +103,8 @@
       result = split_array.join(' ')
     }
 
-    result = result.replace(/^\s+|\s+$/g, '') // trim leading/trailing spaces
+    result = result
+      .trim() // trim leading/trailing spaces
       .replace(/[-\s]+/g, opts.replacement) // convert spaces
       .replace(new RegExp(opts.replacement + '$'), '') // remove trailing separator
 
