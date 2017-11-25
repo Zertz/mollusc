@@ -1,7 +1,8 @@
+'use strict'
+
 // https://github.com/django/django/blob/master/django/contrib/admin/static/admin/js/urlify.js
 
-module.exports = {
-  // latin
+const LATIN_MAP = {
   'À': 'A',
   'Á': 'A',
   'Â': 'A',
@@ -68,8 +69,10 @@ module.exports = {
   'ű': 'u',
   'ý': 'y',
   'þ': 'th',
-  'ÿ': 'y',
-  // greek
+  'ÿ': 'y'
+}
+
+const GREEK_MAP = {
   'α': 'a',
   'β': 'b',
   'γ': 'g',
@@ -138,8 +141,10 @@ module.exports = {
   'Ή': 'H',
   'Ώ': 'W',
   'Ϊ': 'I',
-  'Ϋ': 'Y',
-  // turkish
+  'Ϋ': 'Y'
+}
+
+const TURKISH_MAP = {
   'ş': 's',
   'Ş': 'S',
   'ı': 'i',
@@ -151,8 +156,23 @@ module.exports = {
   'ö': 'o',
   'Ö': 'O',
   'ğ': 'g',
-  'Ğ': 'G',
-  // russian
+  'Ğ': 'G'
+}
+
+const ROMANIAN_MAP = {
+  'ă': 'a',
+  'î': 'i',
+  'ș': 's',
+  'ț': 't',
+  'â': 'a',
+  'Ă': 'A',
+  'Î': 'I',
+  'Ș': 'S',
+  'Ț': 'T',
+  'Â': 'A'
+}
+
+const RUSSIAN_MAP = {
   'а': 'a',
   'б': 'b',
   'в': 'v',
@@ -218,8 +238,10 @@ module.exports = {
   'Ь': '',
   'Э': 'E',
   'Ю': 'Yu',
-  'Я': 'Ya',
-  // ukranian
+  'Я': 'Ya'
+}
+
+const UKRAINIAN_MAP = {
   'Є': 'Ye',
   'І': 'I',
   'Ї': 'Yi',
@@ -227,8 +249,10 @@ module.exports = {
   'є': 'ye',
   'і': 'i',
   'ї': 'yi',
-  'ґ': 'g',
-  // czech
+  'ґ': 'g'
+}
+
+const CZECH_MAP = {
   'č': 'c',
   'ď': 'd',
   'ě': 'e',
@@ -246,8 +270,10 @@ module.exports = {
   'Š': 'S',
   'Ť': 'T',
   'Ů': 'U',
-  'Ž': 'Z',
-  // slovak
+  'Ž': 'Z'
+}
+
+const SLOVAK_MAP = {
   'á': 'a',
   'ä': 'a',
   'č': 'c',
@@ -281,8 +307,10 @@ module.exports = {
   'Ť': 'T',
   'Ú': 'U',
   'Ý': 'Y',
-  'Ž': 'Z',
-  // polish
+  'Ž': 'Z'
+}
+
+const POLISH_MAP = {
   'ą': 'a',
   'ć': 'c',
   'ę': 'e',
@@ -300,8 +328,10 @@ module.exports = {
   'Ó': 'O',
   'Ś': 'S',
   'Ź': 'Z',
-  'Ż': 'Z',
-  // latvian
+  'Ż': 'Z'
+}
+
+const LATVIAN_MAP = {
   'ā': 'a',
   'č': 'c',
   'ē': 'e',
@@ -323,8 +353,10 @@ module.exports = {
   'Ņ': 'N',
   'Š': 'S',
   'Ū': 'U',
-  'Ž': 'Z',
-  // arabic
+  'Ž': 'Z'
+}
+
+const ARABIC_MAP = {
   'أ': 'a',
   'ب': 'b',
   'ت': 't',
@@ -352,8 +384,10 @@ module.exports = {
   'ن': 'n',
   'ه': 'h',
   'و': 'o',
-  'ي': 'y',
-  // lithuanian
+  'ي': 'y'
+}
+
+const LITHUANIAN_MAP = {
   'ą': 'a',
   'č': 'c',
   'ę': 'e',
@@ -371,19 +405,10 @@ module.exports = {
   'Š': 'S',
   'Ų': 'U',
   'Ū': 'U',
-  'Ž': 'Z',
-  // romanian
-  'ă': 'a',
-  'î': 'i',
-  'ș': 's',
-  'ț': 't',
-  'â': 'a',
-  'Ă': 'A',
-  'Î': 'I',
-  'Ș': 'S',
-  'Ț': 'T',
-  'Â': 'A',
-  // serbian
+  'Ž': 'Z'
+}
+
+const SERBIAN_MAP = {
   'ђ': 'dj',
   'ј': 'j',
   'љ': 'lj',
@@ -397,8 +422,10 @@ module.exports = {
   'Њ': 'Nj',
   'Ћ': 'C',
   'Џ': 'Dz',
-  'Đ': 'Dj',
-  // azerbaijani
+  'Đ': 'Dj'
+}
+
+const AZERBAIJANI_MAP = {
   'ç': 'c',
   'ə': 'e',
   'ğ': 'g',
@@ -412,7 +439,46 @@ module.exports = {
   'İ': 'I',
   'Ö': 'O',
   'Ş': 'S',
-  'Ü': 'U',
+  'Ü': 'U'
+}
+
+const GEORGIAN_MAP = {
+  'ა': 'a',
+  'ბ': 'b',
+  'გ': 'g',
+  'დ': 'd',
+  'ე': 'e',
+  'ვ': 'v',
+  'ზ': 'z',
+  'თ': 't',
+  'ი': 'i',
+  'კ': 'k',
+  'ლ': 'l',
+  'მ': 'm',
+  'ნ': 'n',
+  'ო': 'o',
+  'პ': 'p',
+  'ჟ': 'j',
+  'რ': 'r',
+  'ს': 's',
+  'ტ': 't',
+  'უ': 'u',
+  'ფ': 'f',
+  'ქ': 'q',
+  'ღ': 'g',
+  'ყ': 'y',
+  'შ': 'sh',
+  'ჩ': 'ch',
+  'ც': 'c',
+  'ძ': 'dz',
+  'წ': 'w',
+  'ჭ': 'ch',
+  'ხ': 'x',
+  'ჯ': 'j',
+  'ჰ': 'h'
+}
+
+const CUSTOM_MAP = {
   // vietnamese
   'Ạ': 'A',
   'Ả': 'A',
@@ -514,40 +580,6 @@ module.exports = {
   'ỷ': 'y',
   'ỹ': 'y',
   'đ': 'd',
-  // georgian
-  'ა': 'a',
-  'ბ': 'b',
-  'გ': 'g',
-  'დ': 'd',
-  'ე': 'e',
-  'ვ': 'v',
-  'ზ': 'z',
-  'თ': 't',
-  'ი': 'i',
-  'კ': 'k',
-  'ლ': 'l',
-  'მ': 'm',
-  'ნ': 'n',
-  'ო': 'o',
-  'პ': 'p',
-  'ჟ': 'j',
-  'რ': 'r',
-  'ს': 's',
-  'ტ': 't',
-  'უ': 'u',
-  'ფ': 'f',
-  'ქ': 'q',
-  'ღ': 'g',
-  'ყ': 'y',
-  'შ': 'sh',
-  'ჩ': 'ch',
-  'ც': 'c',
-  'ძ': 'dz',
-  'წ': 'w',
-  'ჭ': 'ch',
-  'ხ': 'x',
-  'ჯ': 'j',
-  'ჰ': 'h',
   // currency
   '€': 'euro',
   '₢': 'cruzeiro',
@@ -603,3 +635,23 @@ module.exports = {
   '>': 'greater',
   '×': 'x'
 }
+
+module.exports = Object.assign(
+  {},
+  LATIN_MAP,
+  GREEK_MAP,
+  TURKISH_MAP,
+  ROMANIAN_MAP,
+  RUSSIAN_MAP,
+  UKRAINIAN_MAP,
+  CZECH_MAP,
+  SLOVAK_MAP,
+  POLISH_MAP,
+  LATVIAN_MAP,
+  ARABIC_MAP,
+  LITHUANIAN_MAP,
+  SERBIAN_MAP,
+  AZERBAIJANI_MAP,
+  GEORGIAN_MAP,
+  CUSTOM_MAP
+)
