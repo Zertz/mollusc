@@ -1,4 +1,4 @@
-# [mollusc](https://github.com/Zertz/mollusc) [![Build Status](https://travis-ci.org/Zertz/mollusc.svg?branch=master)](https://travis-ci.org/Zertz/mollusc) [![NPM version](https://badge.fury.io/js/mollusc.png)](http://badge.fury.io/js/mollusc) [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
+# [mollusc](https://github.com/Zertz/mollusc) [![Build Status](https://travis-ci.org/Zertz/mollusc.svg?branch=master)](https://travis-ci.org/Zertz/mollusc) [![NPM version](https://badge.fury.io/js/mollusc.png)](http://badge.fury.io/js/mollusc) [![Coverage Status](https://coveralls.io/repos/github/Zertz/mollusc/badge.svg?branch=master)](https://coveralls.io/github/Zertz/mollusc?branch=master) [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
 
 > Make strings url-safe and replace unicode symbols with their name
 
