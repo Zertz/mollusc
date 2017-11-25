@@ -24,13 +24,13 @@
   "scripts": {
     "lint": "standard",
     "pretest": "npm run lint",
-    "test": "mocha --require should"
+    "test": "mocha -R spec ./test"
   },
   "dependencies": {
     "unicode-json": "~2.0.0"
   },
   "devDependencies": {
-    "mocha": "^1.17.1",
+    "mocha": "^4.0.1",
     "should": "^3.1.2",
     "standard": "^10.0.3"
   },
