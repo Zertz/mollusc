@@ -1,4 +1,4 @@
-# 2.0.0
+# 1.2.0
 
 * Updated `unicode-json` to fix a **[security vulnerability](https://nodesecurity.io/advisories/206)**
 * Dropped Node.js 0.12 support, now supports 4, 6 and 8
