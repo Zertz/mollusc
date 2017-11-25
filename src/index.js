@@ -7,7 +7,7 @@ function symbols (code) {
     return _symbols[code]
   }
 
-  _symbols = require('unicode-json/category/So')
+  _symbols = require('unicode/category/So')
   removelist = ['sign', 'cross', 'of', 'symbol', 'staff', 'hand', 'black', 'white'].map(function (word) {
     return new RegExp(word, 'gi')
   })
