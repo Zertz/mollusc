@@ -8,7 +8,7 @@
     "type": "git",
     "url": "git://github.com/Zertz/mollusc.git"
   },
-  "main": "slug.js",
+  "main": "./src",
   "engines": {
     "node": ">=4"
   },
