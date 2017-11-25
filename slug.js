@@ -58,7 +58,7 @@
 
     for (var i = 0, length = string.length; i < length; i++) {
       var char = string[i]
-
+      var replacementChar = opts.charmap[char]
       if (!lengths.some(function (len) {
         var str = string.substr(i, len)
 
@@ -70,8 +70,8 @@
           return false
         }
       })) {
-        if (typeof opts.charmap[char] === 'string') {
-          char = opts.charmap[char]
+        if (typeof replacementChar === 'string') {
+          char = replacementChar
           code = char.charCodeAt(0)
         } else {
           code = string.charCodeAt(i)
@@ -88,7 +88,9 @@
         }
       }
 
-      char = char.replace(/[^\w\s\-\.\_~]/g, '') // allowed
+      if (typeof replacementChar !== 'string') {
+        char = char.replace(/[^\w\s\-\.\_~]/g, '') // allowed
+      }
 
       if (opts.remove) {
         char = char.replace(opts.remove, '') // add flavour
