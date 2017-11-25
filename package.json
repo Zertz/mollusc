@@ -29,7 +29,7 @@
     "report-coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "dependencies": {
-    "unicode-json": "~2.0.0"
+    "unicode": "^10.0.0"
   },
   "devDependencies": {
     "mocha": "^4.0.1",

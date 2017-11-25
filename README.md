@@ -110,5 +110,5 @@ Default: `slug.multicharmap`
 When using browserify you might want to remove the symbols table from your bundle.
 
 ```bash
-browserify slug.js --ignore unicode-json/category/So -s slug > slug-browser.js
+browserify slug.js --ignore unicode/category/So -s slug > slug-browser.js
 ```
