@@ -1,4 +1,4 @@
-# [mollusc](https://github.com/Zertz/mollusc) [![Build Status](https://travis-ci.org/Zertz/mollusc.svg?branch=master)](https://travis-ci.org/Zertz/mollusc) [![NPM version](https://badge.fury.io/js/mollusc.png)](http://badge.fury.io/js/mollusc)
+# [mollusc](https://github.com/Zertz/mollusc) [![Build Status](https://travis-ci.org/Zertz/mollusc.svg?branch=master)](https://travis-ci.org/Zertz/mollusc) [![NPM version](https://badge.fury.io/js/mollusc.png)](http://badge.fury.io/js/mollusc) [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
 
 > Make strings url-safe and replace unicode symbols with their name
 
@@ -6,7 +6,6 @@
 - Comprehensive tests
 - No dependencies, except unicode data
 - Coerces foreign symbols to their english equivalent
-- Works in browser (window.slug) and AMD/CommonJS-flavoured module loaders (except the unicode symbols unless you use browserify but who wants to download a ~2MB js file, right?)
 
 ## Install
 
@@ -62,7 +61,9 @@ Replace unicode symbols with their name.
 
 Type: `Boolean`
 
-Default: `true`
+Default:
+Node: `true`
+Browser: `false`
 
 #### remove
 
